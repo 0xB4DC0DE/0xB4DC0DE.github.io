@@ -6,18 +6,16 @@ description: AsyncRAT Infection Chain Analysis
 
 ## Summary
 
-This sample utilizes AsyncRAT to remotely monitor and control the infected host through an encrypted tunnel. AsyncRAT is an open source Remote Access Tool maintained by [NYAN-x-CAT](https://github.com/NYAN-x-CAT). Features include Keylogger, screen viewer and recorder, SFTP upload and download and password recovery.
+This sample utilizes AsyncRAT to remotely monitor and control the infected host through an encrypted tunnel. AsyncRAT is an open-source Remote Access Tool maintained by [NYAN-x-CAT](https://github.com/NYAN-x-CAT). Features include Keylogger, screen viewer and recorder, SFTP upload and download, and password recovery.
 
-The infection chain utilized by this sample starts with a WSF file hosted on a malicious URL.
+The infection chain used by this sample begins with a WSF file hosted on a malicious URL.
 
 * Once the WSF file is executed it will then connect to another URL to download a malicious PowerShell script.
 * This PowerShell script is used by the sample to contact another URL and download a second PowerShell script.
-* The second PowerShell script creates a staging directory, a scheduled task, and drops four files into the created directory. The four files created by this sample were coinmarketcap.ps1, imcq.ps1, 1.bat, and coinmarketcap.vbs.
-* When the scheduled task is triggered it will run coinmarketcap.vbs.
-* coinmarketcap.vbs will run 1.bat
-* 1.bat will then run imcq.ps1 which will inject a DLL embedded within itself into Regsvcs.exe and contact the attackers C2.
+* The second PowerShell script creates a staging directory, scheduled task, and drops four files into the created directory. The four files created by this sample were coinmarketcap.ps1, imcq.ps1, 1.bat, and coinmarketcap.vbs.
+* When the scheduled task is triggered, it runs `coinmarketcap.vbs`, which in turn executes `1.bat`. `1.bat` runs `imcq.ps1`, injecting a DLL embedded within itself into `Regsvcs.exe`, and contacts the attackers' C2.
 
-<figure><img src=".gitbook/assets/AsyncRat Infection Chain.jpeg" alt=""><figcaption><p>Infection chain utilized by this sample</p></figcaption></figure>
+<figure><img src=".gitbook/assets/AsyncRat Infection Chain.jpeg" alt=""><figcaption><p>The infection chain utilized by this sample</p></figcaption></figure>
 
 ***
 
@@ -25,7 +23,7 @@ The infection chain utilized by this sample starts with a WSF file hosted on a m
 
 ### Downloader - any.txt
 
-This file is used by the first stage to pull another PowerShell script from a malicious URL and continue the infection chain. The sample uses a find and replace and alternating capital letters in order to confuse someone who may be reading the file.
+This file is used by the first stage to pull another PowerShell script from a malicious URL and continue the infection chain. The sample uses find and replace alternating capital letters to confuse someone who may be reading the file.
 
 This stage of the sample can be deobfuscated to:
 
@@ -35,15 +33,15 @@ Set mw_wscript.shell= CreateObject("wscript.shell") mw_wscript.shell.Run(powersh
 ```
 {% endcode %}
 
-When this is ran it will download the next stage from _hxxps://transfer\[.]sh/CdqqbMkRr9/Ic295.jpg_ and run it with it with PowerShell.
+When this is run it will download the next stage from _hxxps://transfer\[.]sh/CdqqbMkRr9/Ic295.jpg_ and run it with it with PowerShell.
 
 ***
 
 ### Builder - Ic295.jpg
 
-The purpose of this stage is to setup a staging area for the sample and to establish persistence on the victim's machine. When this stage is executed it will drop four files in the staging area and start running the first files of this stage. The first file that is executed in this stage is coinmarketcap.ps1. This file is responsible for creating the scheduled task on the host to setup persistence on the machine, if for some reason the final payload is terminated this scheduled task will re-run the installation process.&#x20;
+The purpose of this stage is to setup a staging area for the sample and to establish persistence on the victim's machine. When this stage is executed it will drop four files in the staging area and start running the first files of this stage. The first file that is executed in this stage is coinmarketcap.ps1. This file is responsible for creating the scheduled task on the host to setup persistence on the machine, if the final payload is terminated this scheduled task will re-run the installation process.&#x20;
 
-The scheduled task is ran with the command line:
+The scheduled task is run with the command line:
 
 {% code overflow="wrap" %}
 ```
@@ -51,7 +49,7 @@ The scheduled task is ran with the command line:
 ```
 {% endcode %}
 
-Once the scheduled task is executed it will then run coinmarketcap.vbs, this stage's responsibility is to run the dropped batch file 1.bat with wscript.
+Once the scheduled task is executed it will then run coinmarketcap.vbs, this stage's responsibility is to run the dropped batch file 1.bat with Wscript.
 
 <figure><img src=".gitbook/assets/Coinmarketcap.vbs.jpeg" alt=""><figcaption><p>contents of coinmarketcap.vbs</p></figcaption></figure>
 
@@ -82,7 +80,7 @@ file-size: 21504 (bytes)
 
 #### _Public Class Execute()_
 
-This class takes the arguments path and payload. These arguments are used by the sample to inject the final payload into a target process. In this sample, it is used to inject the final payload into RegSvcs.exe
+This class takes the arguments path and payload. These arguments are used by the sample to inject the final payload into a target process. In this case, it injects the final payload into RegSvcs.exe.
 
 Sample uses complex math to determine what case to switch to, this behavior is indicative of the malware author employing ConfuserEx to obfuscate the DLL.
 
@@ -90,7 +88,7 @@ Sample uses complex math to determine what case to switch to, this behavior is i
 
 #### _Public Class Str()_
 
-This class uses the functions ReverseString() and BinaryToString() to resolve WinAPI call.
+This class uses the functions ReverseString() and BinaryToString() to resolve WinAPI calls.
 
 **Function ReverseString()**
 
@@ -100,7 +98,7 @@ This function is used by the sample to reverse the order of an input string.
 
 This function searches for the character "气" and replaces it with a 1 After this replacement is completed, it then converts the string from binary to ASCII.
 
-<figure><img src=".gitbook/assets/BinaryToStringExample.JPG" alt=""><figcaption><p>Example of string passed to BinaryToString function</p></figcaption></figure>
+<figure><img src=".gitbook/assets/BinaryToStringExample.JPG" alt=""><figcaption><p>Example of a string passed to BinaryToString function</p></figcaption></figure>
 
 ***
 
@@ -114,14 +112,14 @@ File-type: executable
 Compile Date: Apr 10 2023
 Entropy: 3.913
 Signature: Microsoft Visual C# v7.0 / Basic .NET		
-File-size: 98304 (bytes)
+File size: 98304 (bytes)
 ```
 
 ### Public Class Settings()
 
 **Function InitalizeSettings()**
 
-This function is used buy the sample to decrypt the RAT's configuration and then saves it to a field so it can be used later in the execution.
+This function is used by the sample to decrypt the RAT's configuration and then saves it to a field so it can be used later in the execution.
 
 These are the configuration settings used in this sample:
 
@@ -141,11 +139,11 @@ Hwid  : null
 
 ### Public Class main()
 
-When main is ran it starts by entering a for loop where the escape condition is determined by the settings field "delay". Inside the loop contains the command Thread.Sleep(1000). This means that this sample will sleep for a total of three seconds before any more code is executed.
+When main is run it starts by entering a for loop where the escape condition is determined by the settings field "delay". Inside the loop contains the command Thread.Sleep(1000). This means that this sample will sleep for a total of three seconds before any more code is executed.
 
 <figure><img src=".gitbook/assets/ThreadSleep.JPG" alt=""><figcaption><p>Example of Thread.Sleep()</p></figcaption></figure>
 
-After the delay loop is completed, the sample starts to make decisions based on the configuration that was decrypted earlier. It does this by opening up a try catch block and compares the settings to a Boolean, if the setting is set to true it will run the function related to that setting.
+After the delay loop is completed, the sample begins making decisions based on the previously decrypted configuration. It does this by opening up a try-catch block and comparing the settings to a Boolean, if the setting is set to true it will run the function related to that setting.
 
 <figure><img src=".gitbook/assets/TryCatchMain.JPG" alt=""><figcaption><p>Try catch block used by main()</p></figcaption></figure>
 
@@ -155,9 +153,9 @@ The first setting this sample checks for is Settings.Anti, this is used to deter
 
 #### Function RunAntiAnalysis()
 
-When this function is ran it will call several other functions to employ different anti-analysis techniques. This sample calls the functions Anti\_Analysis.DetectManufacturer(), Anti\_Analysis.DetectDebugger(), Anti\_Analysis.DetectSandboxie(), Anti\_Analysis.IsSmallDisk(), Anti\_Analysis.IsXP() to attempt to not be analyzed.
+When this function is run it will call several other functions to employ different anti-analysis techniques. This sample calls the functions Anti\_Analysis.DetectManufacturer(), Anti\_Analysis.DetectDebugger(), Anti\_Analysis.DetectSandboxie(), Anti\_Analysis.IsSmallDisk(), Anti\_Analysis.IsXP() to attempt to not be analyzed.
 
-The first technique used by the sample is to detect what manufacturer the host made by. It does this by comparing the strings "microsoft corporation", "VIRTUAL", "vmware", and "VirtualBox". If the sample finds any of these strings it will kill the process.
+The first technique used by the sample is to detect what manufacturer the host is made by. It does this by comparing the strings "microsoft corporation", "VIRTUAL", "vmware", and "VirtualBox". If the sample finds any of these strings it will kill the process.
 
 <figure><img src=".gitbook/assets/DetectManufacturer.JPG" alt=""><figcaption><p>Detect Manufacturer function</p></figcaption></figure>
 
@@ -165,19 +163,19 @@ If the sample is unable to find any of these strings it will continue to employ 
 
 #### Function DetectDebugger()
 
-If the sample is able to determine that a debugger is attached to the process it will kill the process, preventing further dynamic analysis from being completed.
+If the sample can determine that a debugger is attached to the process it will kill the process, preventing further dynamic analysis from being completed.
 
 <figure><img src=".gitbook/assets/DetectDebugger.JPG" alt=""><figcaption><p>Detect Debugger function</p></figcaption></figure>
 
 #### Function DetectSandboxie()
 
-The next technique used is to detect if the sample is running in a sandboxie sandbox, it achives this by attempting to create a handle to the DLL SbieDll.dll. If it is able to create a handle it will kill the process. [Sandboxie](https://sandboxie-plus.com/) is a sandbox-based isolation software for 32-bit and 64-bit Windows NT-based operating systems.
+The next technique used is to detect if the sample is running in a Sandboxie sandbox, it achieves this by attempting to create a handle to the DLL SbieDll.dll. If it can create a handle it will kill the process. [Sandboxie](https://sandboxie-plus.com/) is a sandbox-based isolation software for 32-bit and 64-bit Windows NT-based operating systems.
 
 <figure><img src=".gitbook/assets/DetectSandboxie.JPG" alt=""><figcaption><p>Detect Sandboxie function</p></figcaption></figure>
 
 #### Function IsSmallDisk()
 
-After the sample determines that it's not being ran in a sandbox it will try to employ another technique to determine if it's being ran in a virtualized environment, it does this by getting the disk's size and compares it to a constant. In this case it will check if the disk is larger than 61GB.
+After the sample determines that it's not being run in a sandbox it will try to employ another technique to determine if it's being run in a virtualized environment, it does this by getting the disk's size and compares it to a constant. In this case, it will check if the disk is larger than 61GB.
 
 <figure><img src=".gitbook/assets/IsSmallDisk.JPG" alt=""><figcaption><p>Is Small Disk function</p></figcaption></figure>
 
@@ -187,18 +185,58 @@ The last technique used to try to evade detection is to determine if the sample 
 
 <figure><img src=".gitbook/assets/IsXP.JPG" alt=""><figcaption><p>Is XP function</p></figcaption></figure>
 
-Once the sample has completed deploying its anti-analysis techniques it will then start to install the RAT on the host and establish more persistence on the host. First the sample will check if Settings.Install is set to true, if it is it will then call the function NormalStartup.Install().
+Once the sample has completed deploying its anti-analysis techniques it will then start to install the RAT on the host and establish more persistence on the host. First, the sample will check if Settings.Install is set to true, if it is it will then call the function NormalStartup.Install().
 
 #### Function NormalStartup.Install()
 
-This function starts by checking to see if the module's file name is the same as the one set in the configuration. In this sample it's set to "%APPDATA%/python2.09.exe. If they aren't equal the sample will start to enumerate the processes running on the host to check if it is running in another process. If it detects that it's running in another process it will kill the other process.
+This function starts by checking to see if the module's file name is the same as the one set in the configuration. In this sample, it's set to "%APPDATA%/python2.09.exe. If they aren't equal the sample will start to enumerate the processes running on the host to check if it is running in another process. If it detects that it's running in another process it will kill the other process.
 
 <figure><img src=".gitbook/assets/GetFileName.JPG" alt=""><figcaption><p>Code used to check filename</p></figcaption></figure>
 
 <figure><img src=".gitbook/assets/EnumProcesses.JPG" alt=""><figcaption><p>Process enumeration</p></figcaption></figure>
 
-Next the sample will determine if it is running as an administrator, if it is it will created a scheduled task to run the RAT on logon.
+Next, the sample will determine if it is running as an administrator, if it is it will create a scheduled task to run the RAT on logon.
 
-<figure><img src=".gitbook/assets/CreateTask.JPG" alt=""><figcaption><p>Create schtask if sample is running as Admin</p></figcaption></figure>
+<figure><img src=".gitbook/assets/CreateTask.JPG" alt=""><figcaption><p>Create schtask if the sample is running as Admin</p></figcaption></figure>
 
-If the sample is not running as an administrator it will&#x20;
+If the sample is not running as an administrator it will create a registry key in "Software\Microsoft\Windows\CurrentVersion\Run and set the value to the name of the executable set in the configuration.
+
+<figure><img src=".gitbook/assets/SetRegistryRun.JPG" alt=""><figcaption><p>Adding executable to registry</p></figcaption></figure>
+
+Once the sample creates a schtask or registry entry it will then check if the file exists in the path set in the configuration delete it and sleep for 1000ms. After which it will create a file stream with the contents of the file. Once the stream is created a bat file with a random name in the temp directory is set to start the file created with the file stream and then delete the created file. Lastly, it will start a new process with the batch file.
+
+<figure><img src=".gitbook/assets/DeleteAndCreateFile.JPG" alt=""><figcaption><p>Batch file and process creation.</p></figcaption></figure>
+
+After the sample is installed and establishes persistence on the victim's machine, it will set the thread's state to prevent it from sleeping. Then, it creates a new thread with the function LastAct().
+
+<figure><img src=".gitbook/assets/ThreadCreation.JPG" alt=""><figcaption><p>Thread being started with function LastAct</p></figcaption></figure>
+
+#### Function LastAct()
+
+This function is used to run every 1000ms and get the idle time of the thread
+
+<figure><img src=".gitbook/assets/LastAct.JPG" alt=""><figcaption><p>Function LastAct</p></figcaption></figure>
+
+After this thread is created the sample will check the value of the field Settings.offlineKL, if it's set to true the sample will initialize the built-in keylogger on the host. This sample utilizes LimeLogger, this keylogger is a simple C# keylogger maintained by the RAT's author NYAN-x-CAT.
+
+<figure><img src=".gitbook/assets/LimeLogger.JPG" alt=""><figcaption><p>Lime logger initialization</p></figcaption></figure>
+
+After the try-catch block is completed an infinite loop is created where the the sample will check if there is a socket connected to this process, if there is the sample will sleep for 5000ms, if there isn't a socket connected the sample will call two functions. The first function called by the loop is ClientSocket.Reconnect().
+
+#### Function ClientSocket.Reconnect()
+
+This function is used by the sample to check if the host has a connection to the C2, it does this by checking if there is an SSL stream established, a TCP socket created, a ping interval set, and a keepAlive packet created. If it does not it will return that it isn't connected.
+
+<figure><img src=".gitbook/assets/Reconnect.JPG" alt=""><figcaption></figcaption></figure>
+
+After the status of the connection is checked the sample will call the function ClientSocket.InitializeClient(). This function is responsible for selecting a C2 and creating a connection to that C2.
+
+#### Function ClientSocket.InitializeClient()
+
+When this function is called it will start by creating a new TCP socket. After the socket is created the sample will determine if it is using a pastebin to search for the C2 or a host determined in the configuration.  If the sample is not using a pastebin it will select a random host from the configuration and attempt to connect to it, if the connection fails it will try another host from the configuration.
+
+<figure><img src=".gitbook/assets/InitClient.JPG" alt=""><figcaption><p>Client socket creation</p></figcaption></figure>
+
+After the connection with the C2 is created the sample will start sending information about the host and start searching for crypto wallets to steal. It does this by calling the function SendInfo(). This function will send HWID, user, OS, Path, if the process is running as an admin, the active window, the pastebin from the configuration, the antivirus running on the host, and search for other sensitive information on the host and pack it into a zip file to be sent to the C2
+
+<figure><img src=".gitbook/assets/SendInfo.JPG" alt=""><figcaption><p>Function SendInfo</p></figcaption></figure>
