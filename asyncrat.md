@@ -149,3 +149,56 @@ After the delay loop is completed, the sample starts to make decisions based on 
 
 <figure><img src=".gitbook/assets/TryCatchMain.JPG" alt=""><figcaption><p>Try catch block used by main()</p></figcaption></figure>
 
+The first setting this sample checks for is Settings.Anti, this is used to determine if anti-analysis techniques will be utilized. If the configuration has anti-analysis enabled the sample will call the function RunAntiAnalysis().
+
+<figure><img src=".gitbook/assets/RunAntiAnalysis.JPG" alt=""><figcaption><p>Anti-analysis function</p></figcaption></figure>
+
+#### Function RunAntiAnalysis()
+
+When this function is ran it will call several other functions to employ different anti-analysis techniques. This sample calls the functions Anti\_Analysis.DetectManufacturer(), Anti\_Analysis.DetectDebugger(), Anti\_Analysis.DetectSandboxie(), Anti\_Analysis.IsSmallDisk(), Anti\_Analysis.IsXP() to attempt to not be analyzed.
+
+The first technique used by the sample is to detect what manufacturer the host made by. It does this by comparing the strings "microsoft corporation", "VIRTUAL", "vmware", and "VirtualBox". If the sample finds any of these strings it will kill the process.
+
+<figure><img src=".gitbook/assets/DetectManufacturer.JPG" alt=""><figcaption><p>Detect Manufacturer function</p></figcaption></figure>
+
+If the sample is unable to find any of these strings it will continue to employ anti-analysis techniques, the next one used is to determine if a debugger is attached to the process.
+
+#### Function DetectDebugger()
+
+If the sample is able to determine that a debugger is attached to the process it will kill the process, preventing further dynamic analysis from being completed.
+
+<figure><img src=".gitbook/assets/DetectDebugger.JPG" alt=""><figcaption><p>Detect Debugger function</p></figcaption></figure>
+
+#### Function DetectSandboxie()
+
+The next technique used is to detect if the sample is running in a sandboxie sandbox, it achives this by attempting to create a handle to the DLL SbieDll.dll. If it is able to create a handle it will kill the process. [Sandboxie](https://sandboxie-plus.com/) is a sandbox-based isolation software for 32-bit and 64-bit Windows NT-based operating systems.
+
+<figure><img src=".gitbook/assets/DetectSandboxie.JPG" alt=""><figcaption><p>Detect Sandboxie function</p></figcaption></figure>
+
+#### Function IsSmallDisk()
+
+After the sample determines that it's not being ran in a sandbox it will try to employ another technique to determine if it's being ran in a virtualized environment, it does this by getting the disk's size and compares it to a constant. In this case it will check if the disk is larger than 61GB.
+
+<figure><img src=".gitbook/assets/IsSmallDisk.JPG" alt=""><figcaption><p>Is Small Disk function</p></figcaption></figure>
+
+#### Function IsXP()
+
+The last technique used to try to evade detection is to determine if the sample is running on a Windows XP machine.
+
+<figure><img src=".gitbook/assets/IsXP.JPG" alt=""><figcaption><p>Is XP function</p></figcaption></figure>
+
+Once the sample has completed deploying its anti-analysis techniques it will then start to install the RAT on the host and establish more persistence on the host. First the sample will check if Settings.Install is set to true, if it is it will then call the function NormalStartup.Install().
+
+#### Function NormalStartup.Install()
+
+This function starts by checking to see if the module's file name is the same as the one set in the configuration. In this sample it's set to "%APPDATA%/python2.09.exe. If they aren't equal the sample will start to enumerate the processes running on the host to check if it is running in another process. If it detects that it's running in another process it will kill the other process.
+
+<figure><img src=".gitbook/assets/GetFileName.JPG" alt=""><figcaption><p>Code used to check filename</p></figcaption></figure>
+
+<figure><img src=".gitbook/assets/EnumProcesses.JPG" alt=""><figcaption><p>Process enumeration</p></figcaption></figure>
+
+Next the sample will determine if it is running as an administrator, if it is it will created a scheduled task to run the RAT on logon.
+
+<figure><img src=".gitbook/assets/CreateTask.JPG" alt=""><figcaption><p>Create schtask if sample is running as Admin</p></figcaption></figure>
+
+If the sample is not running as an administrator it will&#x20;
