@@ -2,7 +2,7 @@
 
 * [👾 Welcome to 0x.B4DC0.DE](README.md)
 
-## ☢ Malware
+## Malware
 
 * [Analysis](malware/analysis/README.md)
   * [AsyncRAT](malware/analysis/asyncrat.md)
