@@ -1,8 +1,12 @@
 # Newest Posts
 
-
+**Unraveling Quakbot's Demise: Insights from Operation Duck Hunt**
 
 An international coalition, including the FBI, dismantled Quakbot's network, addressing over 700,000 infected hosts. Initial analysis of the Operation Duck Hunt sample revealed vague clues, but meticulous disassembly and debugger use unveiled the shellcode's memory allocation, exposing executable files stored within allocated memory blocks. Deeper investigation into the dumped DLLs and executables provided insights into the sample's timeline and actions, aiding in understanding the takedown's orchestration.
+
+{% content-ref url="malware/analysis/operation-duck-hunt.md" %}
+[operation-duck-hunt.md](malware/analysis/operation-duck-hunt.md)
+{% endcontent-ref %}
 
 
 
