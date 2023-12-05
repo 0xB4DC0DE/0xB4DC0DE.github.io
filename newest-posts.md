@@ -1,5 +1,11 @@
 # Newest Posts
 
+
+
+An international coalition, including the FBI, dismantled Quakbot's network, addressing over 700,000 infected hosts. Initial analysis of the Operation Duck Hunt sample revealed vague clues, but meticulous disassembly and debugger use unveiled the shellcode's memory allocation, exposing executable files stored within allocated memory blocks. Deeper investigation into the dumped DLLs and executables provided insights into the sample's timeline and actions, aiding in understanding the takedown's orchestration.
+
+
+
 **Solving ROP Emporium ret2win**
 
 This post dives deep into mastering ROP exploits, particularly focusing on the 'ret2win' challenge. It guides readers through using Python and Radare2 to craft and execute a specialized code sequence, successfully retrieving hidden data from 'flag.txt'. A concise and practical guide to conquering ROP challenges.

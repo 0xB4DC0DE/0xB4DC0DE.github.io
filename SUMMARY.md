@@ -7,6 +7,7 @@
 
 * [Analysis](malware/analysis/README.md)
   * [AsyncRAT](malware/analysis/asyncrat.md)
+  * [Operation Duck Hunt](malware/analysis/operation-duck-hunt.md)
 
 ## Binary Exploitation
 
