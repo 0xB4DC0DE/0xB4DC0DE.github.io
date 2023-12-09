@@ -1,5 +1,13 @@
 # Newest Posts
 
+**Solving ROP Emporium split**
+
+This challenge, akin to ret2win, demands passing "/bin/cat flag.txt" as an argument to a function rather than the function automatically reading the flag. Using pwndbg and cyclic, the buffer size is determined, followed by the location of specific gadgets using radare2 and ropper to manipulate the program flow and call the desired function. By combining located gadgets, the exploit is crafted to execute "/bin/cat flag.txt," revealing the flag upon script execution.
+
+{% content-ref url="binary-exploitation/rop-emporium/split.md" %}
+[split.md](binary-exploitation/rop-emporium/split.md)
+{% endcontent-ref %}
+
 **Unraveling Quakbot's Demise: Insights from Operation Duck Hunt**
 
 An international coalition, including the FBI, dismantled Quakbot's network, addressing over 700,000 infected hosts. Initial analysis of the Operation Duck Hunt sample revealed vague clues, but meticulous disassembly and debugger use unveiled the shellcode's memory allocation, exposing executable files stored within allocated memory blocks. Deeper investigation into the dumped DLLs and executables provided insights into the sample's timeline and actions, aiding in understanding the takedown's orchestration.
