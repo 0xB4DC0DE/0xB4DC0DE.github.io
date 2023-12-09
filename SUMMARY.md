@@ -13,3 +13,4 @@
 
 * [ROP Emporium](binary-exploitation/rop-emporium/README.md)
   * [Ret2Win](binary-exploitation/rop-emporium/ret2win.md)
+  * [Split](binary-exploitation/rop-emporium/split.md)
