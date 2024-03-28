@@ -2,6 +2,7 @@
 
 * [👾 Welcome to 0x.B4DC0.DE](README.md)
 * [Newest Posts](newest-posts.md)
+* [Updates](updates.md)
 
 ## Malware
 
