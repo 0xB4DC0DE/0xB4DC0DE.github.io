@@ -1,5 +1,7 @@
 # Updates
 
+{% embed url="https://labs.hackthebox.com/achievement/sherlock/29516/563" %}
+
 {% embed url="https://labs.hackthebox.com/achievement/sherlock/29516/556" %}
 
 {% embed url="https://www.hackthebox.com/achievement/challenge/29516/39" %}
