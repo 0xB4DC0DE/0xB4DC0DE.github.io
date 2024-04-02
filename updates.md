@@ -1,5 +1,9 @@
 # Updates
 
+{% embed url="https://www.hackthebox.com/achievement/challenge/29516/611" %}
+Completed 02 APR 2024
+{% endembed %}
+
 {% embed url="https://labs.hackthebox.com/achievement/sherlock/29516/563" %}
 Completed 01 APR 2024
 {% endembed %}
