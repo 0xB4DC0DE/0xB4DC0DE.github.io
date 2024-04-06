@@ -1,34 +1,21 @@
 # Updates
 
-{% embed url="https://www.hackthebox.com/achievement/challenge/29516/611" %}
-Completed 02 APR 2024
-{% endembed %}
+<figure><img src=".gitbook/assets/Maze.PNG" alt=""><figcaption></figcaption></figure>
 
-{% embed url="https://labs.hackthebox.com/achievement/sherlock/29516/563" %}
-Completed 01 APR 2024
-{% endembed %}
+<figure><img src=".gitbook/assets/SEPC.PNG" alt=""><figcaption></figcaption></figure>
 
-{% embed url="https://labs.hackthebox.com/achievement/sherlock/29516/556" %}
-Completed 25 MAR 2024
-{% endembed %}
+<figure><img src=".gitbook/assets/Virtually_Mad.PNG" alt=""><figcaption></figcaption></figure>
 
-{% embed url="https://www.hackthebox.com/achievement/challenge/29516/39" %}
-Completed 14 JAN 2024
-{% endembed %}
+<figure><img src=".gitbook/assets/Lockpick2.PNG" alt=""><figcaption></figcaption></figure>
 
-{% embed url="https://www.hackthebox.com/achievement/challenge/29516/306" %}
-Completed 10 JAN 2024
-{% endembed %}
+<figure><img src=".gitbook/assets/Lockpick1.PNG" alt=""><figcaption></figcaption></figure>
 
-{% embed url="https://www.hackthebox.com/achievement/challenge/29516/536" %}
-Completed 6 JAN 2024
-{% endembed %}
+<figure><img src=".gitbook/assets/Reminiscent.PNG" alt=""><figcaption></figcaption></figure>
 
-{% embed url="https://www.hackthebox.com/achievement/challenge/29516/424" %}
-Completed 4 JAN 2024
-{% endembed %}
+<figure><img src=".gitbook/assets/Partial_Encryption.PNG" alt=""><figcaption></figcaption></figure>
 
-{% embed url="https://www.hackthebox.com/achievement/challenge/29516/72" %}
-Completed 18 JAN 2024
-{% endembed %}
+<figure><img src=".gitbook/assets/Cyberpsychosis.PNG" alt=""><figcaption></figcaption></figure>
 
+<figure><img src=".gitbook/assets/FFModule.PNG" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/Debugme.PNG" alt=""><figcaption></figcaption></figure>

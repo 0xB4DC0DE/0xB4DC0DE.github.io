@@ -15,3 +15,10 @@ Welcome to my corner of the interwebs! I'm a passionate SOC analyst deeply entre
 **Mission and Values:**
 
 My mission is to demystify the intricacies of cybersecurity, making it more accessible and understandable for enthusiasts, budding analysts, and seasoned professionals alike. I believe in the power of shared knowledge and continuous learning in fortifying our digital world against evolving threats.
+
+### Check out what I've been up to below&#x20;
+
+{% content-ref url="updates.md" %}
+[updates.md](updates.md)
+{% endcontent-ref %}
+

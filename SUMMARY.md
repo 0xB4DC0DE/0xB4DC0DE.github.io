@@ -4,11 +4,11 @@
 * [Newest Posts](newest-posts.md)
 * [Updates](updates.md)
 
-## Malware
+## Malware / Writeups
 
-* [Analysis](malware/analysis/README.md)
-  * [AsyncRAT](malware/analysis/asyncrat.md)
-  * [Operation Duck Hunt](malware/analysis/operation-duck-hunt.md)
+* [Analysis](malware-writeups/analysis/README.md)
+  * [AsyncRAT](malware-writeups/analysis/asyncrat.md)
+  * [Operation Duck Hunt](malware-writeups/analysis/operation-duck-hunt.md)
 
 ## Binary Exploitation
 
