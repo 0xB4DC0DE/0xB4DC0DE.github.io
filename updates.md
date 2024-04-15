@@ -1,5 +1,9 @@
 # Updates
 
+<figure><img src=".gitbook/assets/PTRACE_NOPEEKING.PNG" alt=""><figcaption></figcaption></figure>
+
+<figure><img src=".gitbook/assets/Arms_Race.PNG" alt=""><figcaption></figcaption></figure>
+
 <figure><img src=".gitbook/assets/ReRop.PNG" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/Maze.PNG" alt=""><figcaption></figcaption></figure>
