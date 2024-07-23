@@ -1,5 +1,13 @@
 # Newest Posts
 
+#### Analyzing GuLoader: Extracting and Deobfuscating PowerShell Payloads
+
+&#x20;This guide outlines how to dissect GuLoader malware by extracting and deobfuscating its PowerShell payloads. It details locating `wscript` calls to extract the initial script and determining substring values for deobfuscation with Python scripts
+
+{% content-ref url="malware-writeups/analysis/guloader-script-deobfuscation.md" %}
+[guloader-script-deobfuscation.md](malware-writeups/analysis/guloader-script-deobfuscation.md)
+{% endcontent-ref %}
+
 #### Creating a PowerShell Obfuscator
 
 This method employs several techniques to obfuscate PowerShell payloads, by using XOR encryption, gzipped base64 encoding, and minimal variable usage. It ensures scripts evade detection in PowerShell ISE by encoding input characters with an XOR key, shuffling arrays, and constructing format strings referencing encrypted values.
