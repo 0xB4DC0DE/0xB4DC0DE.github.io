@@ -1,5 +1,15 @@
 # Newest Posts
 
+#### Creating a PowerShell Obfuscator
+
+This method employs several techniques to obfuscate PowerShell payloads, by using XOR encryption, gzipped base64 encoding, and minimal variable usage. It ensures scripts evade detection in PowerShell ISE by encoding input characters with an XOR key, shuffling arrays, and constructing format strings referencing encrypted values.
+
+{% content-ref url="malware-writeups/development/powershell-script-block-obfuscation.md" %}
+[powershell-script-block-obfuscation.md](malware-writeups/development/powershell-script-block-obfuscation.md)
+{% endcontent-ref %}
+
+
+
 **Solving ROP Emporium split**
 
 This challenge, akin to ret2win, demands passing "/bin/cat flag.txt" as an argument to a function rather than the function automatically reading the flag. Using pwndbg and cyclic, the buffer size is determined, followed by the location of specific gadgets using radare2 and ropper to manipulate the program flow and call the desired function. By combining located gadgets, the exploit is crafted to execute "/bin/cat flag.txt," revealing the flag upon script execution.
