@@ -12,7 +12,6 @@ Welcome to my corner of the internet! I'm a passionate malware analyst deeply in
 
 ### Check out what I've been up to below&#x20;
 
-{% content-ref url="updates.md" %}
-[updates.md](updates.md)
+{% content-ref url="newest-posts.md" %}
+[newest-posts.md](newest-posts.md)
 {% endcontent-ref %}
-

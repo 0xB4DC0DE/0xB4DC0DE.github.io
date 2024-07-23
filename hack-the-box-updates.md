@@ -1,12 +1,6 @@
-# Updates
+# Hack The Box Updates
 
 
-
-{% content-ref url="malware-writeups/development/powershell-script-block-obfuscation.md" %}
-[powershell-script-block-obfuscation.md](malware-writeups/development/powershell-script-block-obfuscation.md)
-{% endcontent-ref %}
-
-Python script made to obfuscate PowerShell scripts with script blocks and XORed strings.
 
 <figure><img src=".gitbook/assets/PTRACE_NOPEEKING.PNG" alt=""><figcaption></figcaption></figure>
 
