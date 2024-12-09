@@ -1,5 +1,15 @@
 # Newest Posts
 
+#### VBS-JS Polyglot
+
+By abusing vbs and JS comments a psuedo-polyglot can be built to take advantage of how cscript and wscript allow a user to specify a scripting engine from the commandline.
+
+{% content-ref url="malware-writeups/development/vbs-js-polyglot.md" %}
+[vbs-js-polyglot.md](malware-writeups/development/vbs-js-polyglot.md)
+{% endcontent-ref %}
+
+
+
 #### Analyzing GuLoader: Extracting and Deobfuscating PowerShell Payloads
 
 &#x20;This guide outlines how to dissect GuLoader malware by extracting and deobfuscating its PowerShell payloads. It details locating `wscript` calls to extract the initial script and determining substring values for deobfuscation with Python scripts
