@@ -8,6 +8,7 @@
 
 * [Development](malware-writeups/development/README.md)
   * [PowerShell Script Block Obfuscation](malware-writeups/development/powershell-script-block-obfuscation.md)
+  * [VBS-JS Polyglot](malware-writeups/development/vbs-js-polyglot.md)
 * [Analysis](malware-writeups/analysis/README.md)
   * [AsyncRAT](malware-writeups/analysis/asyncrat.md)
   * [Operation Duck Hunt](malware-writeups/analysis/operation-duck-hunt.md)
