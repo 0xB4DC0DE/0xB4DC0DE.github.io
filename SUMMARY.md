@@ -13,6 +13,7 @@
   * [AsyncRAT](malware-writeups/analysis/asyncrat.md)
   * [Operation Duck Hunt](malware-writeups/analysis/operation-duck-hunt.md)
   * [GuLoader Script Deobfuscation](malware-writeups/analysis/guloader-script-deobfuscation.md)
+  * [Creating a deobfuscator](malware-writeups/analysis/creating-a-deobfuscator.md)
 
 ## Binary Exploitation
 
