@@ -1,5 +1,15 @@
 # Newest Posts
 
+#### Creating a Deobfuscator
+
+Sometimes open source tools don't work on a sample and you have get your hands dirty and do things yourself. This post is about how I went from an unknown sample to being able to identify what family the sample is from and derive IOCs from the sample
+
+{% content-ref url="malware-writeups/analysis/creating-a-deobfuscator.md" %}
+[creating-a-deobfuscator.md](malware-writeups/analysis/creating-a-deobfuscator.md)
+{% endcontent-ref %}
+
+
+
 #### VBS-JS Polyglot
 
 By abusing vbs and JS comments a psuedo-polyglot can be built to take advantage of how cscript and wscript allow a user to specify a scripting engine from the commandline.
