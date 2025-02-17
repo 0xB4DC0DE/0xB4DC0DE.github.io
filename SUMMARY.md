@@ -14,6 +14,8 @@
   * [Operation Duck Hunt](malware-writeups/analysis/operation-duck-hunt.md)
   * [GuLoader Script Deobfuscation](malware-writeups/analysis/guloader-script-deobfuscation.md)
   * [Creating a deobfuscator](malware-writeups/analysis/creating-a-deobfuscator.md)
+  * [SmokeLoader Analysis](malware-writeups/analysis/smokeloader-analysis/README.md)
+    * [Clearing the Smoke: A Smokeloader Analysis Part 1](malware-writeups/analysis/smokeloader-analysis/clearing-the-smoke-a-smokeloader-analysis-part-1.md)
 
 ## Binary Exploitation
 
